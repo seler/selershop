@@ -4,6 +4,7 @@
 
 package selershop;
 
+import java.awt.Color;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -35,7 +36,7 @@ public class SelerShopView extends FrameView {
         super(app);
 
         initComponents();
-
+        //HistogramKanal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wszystkie", "Czerwony", "Zielony", "Niebieski" }));
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
@@ -100,6 +101,7 @@ public class SelerShopView extends FrameView {
         }
         SelerShopApp.getApplication().show(aboutBox);*/
     }
+
     
     public boolean pobierzWartosc() {
         String wartosc_str = JOptionPane.showInputDialog(null, "Wpisz wartość : ", "SelerShop - Wpisz wartość", 1);
@@ -129,6 +131,13 @@ public class SelerShopView extends FrameView {
         mainPanel = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         plotno = new selershop.Plotno();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        panelnahistogramy = new javax.swing.JPanel();
+        histogramPanel = new myprzegladarka.histogramPanel();
+        histogramPanelR = new myprzegladarka.histogramPanel();
+        histogramPanelG = new myprzegladarka.histogramPanel();
+        histogramPanelB = new myprzegladarka.histogramPanel();
+        jPanel1 = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         otworz = new javax.swing.JMenuItem();
@@ -152,10 +161,14 @@ public class SelerShopView extends FrameView {
         laplacian = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         stiffness = new javax.swing.JMenuItem();
+        wlasny = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        wyrownanie = new javax.swing.JMenuItem();
+        binaryzacja = new javax.swing.JMenuItem();
+        obliczHistogram = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
@@ -163,12 +176,6 @@ public class SelerShopView extends FrameView {
         statusMessageLabel = new javax.swing.JLabel();
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
-        jDialog1 = new javax.swing.JDialog();
-        jDialog2 = new javax.swing.JDialog();
-        popupMenu1 = new java.awt.PopupMenu();
-        jDialog3 = new javax.swing.JDialog();
-        jDialog4 = new javax.swing.JDialog();
-        popupMenu2 = new java.awt.PopupMenu();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
@@ -180,29 +187,134 @@ public class SelerShopView extends FrameView {
         plotno.setLayout(plotnoLayout);
         plotnoLayout.setHorizontalGroup(
             plotnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 398, Short.MAX_VALUE)
+            .addGap(0, 797, Short.MAX_VALUE)
         );
         plotnoLayout.setVerticalGroup(
             plotnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addGap(0, 562, Short.MAX_VALUE)
         );
 
         jScrollPane.setViewportView(plotno);
+
+        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+
+        panelnahistogramy.setName("panelnahistogramy"); // NOI18N
+
+        histogramPanel.setName("histogramPanel"); // NOI18N
+
+        javax.swing.GroupLayout histogramPanelLayout = new javax.swing.GroupLayout(histogramPanel);
+        histogramPanel.setLayout(histogramPanelLayout);
+        histogramPanelLayout.setHorizontalGroup(
+            histogramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 407, Short.MAX_VALUE)
+        );
+        histogramPanelLayout.setVerticalGroup(
+            histogramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        histogramPanelR.setName("histogramPanelR"); // NOI18N
+
+        javax.swing.GroupLayout histogramPanelRLayout = new javax.swing.GroupLayout(histogramPanelR);
+        histogramPanelR.setLayout(histogramPanelRLayout);
+        histogramPanelRLayout.setHorizontalGroup(
+            histogramPanelRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 407, Short.MAX_VALUE)
+        );
+        histogramPanelRLayout.setVerticalGroup(
+            histogramPanelRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        histogramPanelG.setName("histogramPanelG"); // NOI18N
+
+        javax.swing.GroupLayout histogramPanelGLayout = new javax.swing.GroupLayout(histogramPanelG);
+        histogramPanelG.setLayout(histogramPanelGLayout);
+        histogramPanelGLayout.setHorizontalGroup(
+            histogramPanelGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 407, Short.MAX_VALUE)
+        );
+        histogramPanelGLayout.setVerticalGroup(
+            histogramPanelGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        histogramPanelB.setName("histogramPanelB"); // NOI18N
+
+        javax.swing.GroupLayout histogramPanelBLayout = new javax.swing.GroupLayout(histogramPanelB);
+        histogramPanelB.setLayout(histogramPanelBLayout);
+        histogramPanelBLayout.setHorizontalGroup(
+            histogramPanelBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 407, Short.MAX_VALUE)
+        );
+        histogramPanelBLayout.setVerticalGroup(
+            histogramPanelBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelnahistogramyLayout = new javax.swing.GroupLayout(panelnahistogramy);
+        panelnahistogramy.setLayout(panelnahistogramyLayout);
+        panelnahistogramyLayout.setHorizontalGroup(
+            panelnahistogramyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelnahistogramyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelnahistogramyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelnahistogramyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(histogramPanelR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(histogramPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(histogramPanelB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(histogramPanelG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panelnahistogramyLayout.setVerticalGroup(
+            panelnahistogramyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelnahistogramyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(histogramPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(histogramPanelR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(histogramPanelB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(histogramPanelG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(selershop.SelerShopApp.class).getContext().getResourceMap(SelerShopView.class);
+        jTabbedPane1.addTab(resourceMap.getString("panelnahistogramy.TabConstraints.tabTitle"), panelnahistogramy); // NOI18N
+
+        jPanel1.setName("jPanel1"); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 322, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 553, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab(resourceMap.getString("jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+            .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(selershop.SelerShopApp.class).getContext().getResourceMap(SelerShopView.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
@@ -268,6 +380,11 @@ public class SelerShopView extends FrameView {
 
         jMenu2.setText(resourceMap.getString("jMenu2.text")); // NOI18N
         jMenu2.setName("jMenu2"); // NOI18N
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
 
         usredniajacy.setText(resourceMap.getString("usredniajacy.text")); // NOI18N
         usredniajacy.setName("usredniajacy"); // NOI18N
@@ -368,6 +485,15 @@ public class SelerShopView extends FrameView {
         });
         jMenu2.add(stiffness);
 
+        wlasny.setText(resourceMap.getString("wlasny.text")); // NOI18N
+        wlasny.setName("wlasny"); // NOI18N
+        wlasny.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wlasnyActionPerformed(evt);
+            }
+        });
+        jMenu2.add(wlasny);
+
         menuBar.add(jMenu2);
 
         jMenu3.setText(resourceMap.getString("jMenu3.text")); // NOI18N
@@ -385,6 +511,35 @@ public class SelerShopView extends FrameView {
 
         jMenu4.setText(resourceMap.getString("jMenu4.text")); // NOI18N
         jMenu4.setName("jMenu4"); // NOI18N
+
+        wyrownanie.setText(resourceMap.getString("wyrownanie.text")); // NOI18N
+        wyrownanie.setName("wyrownanie"); // NOI18N
+        wyrownanie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wyrownanieActionPerformed(evt);
+            }
+        });
+        jMenu4.add(wyrownanie);
+
+        binaryzacja.setText(resourceMap.getString("binaryzacja.text")); // NOI18N
+        binaryzacja.setName("binaryzacja"); // NOI18N
+        binaryzacja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                binaryzacjaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(binaryzacja);
+
+        obliczHistogram.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        obliczHistogram.setText(resourceMap.getString("obliczHistogram.text")); // NOI18N
+        obliczHistogram.setName("obliczHistogram"); // NOI18N
+        obliczHistogram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                obliczHistogramActionPerformed(evt);
+            }
+        });
+        jMenu4.add(obliczHistogram);
+
         menuBar.add(jMenu4);
 
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
@@ -411,11 +566,11 @@ public class SelerShopView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 471, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -432,62 +587,6 @@ public class SelerShopView extends FrameView {
                     .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3))
         );
-
-        jDialog1.setName("jDialog1"); // NOI18N
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jDialog2.setName("jDialog2"); // NOI18N
-
-        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
-        jDialog2.getContentPane().setLayout(jDialog2Layout);
-        jDialog2Layout.setHorizontalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog2Layout.setVerticalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        popupMenu1.setLabel(resourceMap.getString("popupMenu1.label")); // NOI18N
-
-        jDialog3.setName("jDialog3"); // NOI18N
-
-        javax.swing.GroupLayout jDialog3Layout = new javax.swing.GroupLayout(jDialog3.getContentPane());
-        jDialog3.getContentPane().setLayout(jDialog3Layout);
-        jDialog3Layout.setHorizontalGroup(
-            jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog3Layout.setVerticalGroup(
-            jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jDialog4.setName("jDialog4"); // NOI18N
-
-        javax.swing.GroupLayout jDialog4Layout = new javax.swing.GroupLayout(jDialog4.getContentPane());
-        jDialog4.getContentPane().setLayout(jDialog4Layout);
-        jDialog4Layout.setHorizontalGroup(
-            jDialog4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog4Layout.setVerticalGroup(
-            jDialog4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        popupMenu2.setLabel(resourceMap.getString("popupMenu2.label")); // NOI18N
 
         setComponent(mainPanel);
         setMenuBar(menuBar);
@@ -653,26 +752,55 @@ public class SelerShopView extends FrameView {
         plotno.Splot(matrix, rozmiar);
     }//GEN-LAST:event_stiffnessActionPerformed
 
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
+    private void wlasnyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wlasnyActionPerformed
+
+    }//GEN-LAST:event_wlasnyActionPerformed
+
+    private void obliczHistogramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obliczHistogramActionPerformed
+        plotno.ObliczHistogram();
+        histogramPanel.DrawHistogram(plotno.histogram, Color.black);
+        histogramPanelR.DrawHistogram(plotno.histogramR, Color.red);
+        histogramPanelG.DrawHistogram(plotno.histogramG, Color.green);
+        histogramPanelB.DrawHistogram(plotno.histogramB, Color.blue);
+    }//GEN-LAST:event_obliczHistogramActionPerformed
+
+    private void wyrownanieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wyrownanieActionPerformed
+        plotno.wyrownanie();
+    }//GEN-LAST:event_wyrownanieActionPerformed
+
+    private void binaryzacjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_binaryzacjaActionPerformed
+        if(this.pobierzWartosc()){
+            Float a = new Float(0);
+            plotno.Binaryzacja(wartosc);
+        }
+    }//GEN-LAST:event_binaryzacjaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem binaryzacja;
     private javax.swing.JMenuItem dodawanie;
     private javax.swing.JMenuItem gauss;
     private javax.swing.JMenuItem gorny1;
     private javax.swing.JMenuItem gorny2;
     private javax.swing.JMenuItem gorny3;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JDialog jDialog2;
-    private javax.swing.JDialog jDialog3;
-    private javax.swing.JDialog jDialog4;
+    private myprzegladarka.histogramPanel histogramPanel;
+    private myprzegladarka.histogramPanel histogramPanelB;
+    private myprzegladarka.histogramPanel histogramPanelG;
+    private myprzegladarka.histogramPanel histogramPanelR;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JMenuItem krawedziePionowy;
     private javax.swing.JMenuItem krawedziePoziomy;
     private javax.swing.JMenuItem laplacian;
@@ -680,10 +808,10 @@ public class SelerShopView extends FrameView {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mnozenie;
+    private javax.swing.JMenuItem obliczHistogram;
     private javax.swing.JMenuItem otworz;
+    private javax.swing.JPanel panelnahistogramy;
     private selershop.Plotno plotno;
-    private java.awt.PopupMenu popupMenu1;
-    private java.awt.PopupMenu popupMenu2;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JMenuItem resetuj;
     private javax.swing.JLabel statusAnimationLabel;
@@ -691,6 +819,8 @@ public class SelerShopView extends FrameView {
     private javax.swing.JPanel statusPanel;
     private javax.swing.JMenuItem stiffness;
     private javax.swing.JMenuItem usredniajacy;
+    private javax.swing.JMenuItem wlasny;
+    private javax.swing.JMenuItem wyrownanie;
     private javax.swing.JMenuItem zapisz;
     // End of variables declaration//GEN-END:variables
 

@@ -10,10 +10,15 @@
  */
 package selershop;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
+import java.awt.image.ByteLookupTable;
+import java.awt.image.ColorConvertOp;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
+import java.awt.image.LookupOp;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -22,6 +27,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.image.RescaleOp;
+import javax.media.jai.Histogram;
+import javax.media.jai.JAI;
 /**
  *
  * @author Seler
@@ -30,6 +37,10 @@ public class Plotno extends javax.swing.JPanel {
     File plik;
     BufferedImage obrazek;
     int typ;
+    int[] histogram = new int[256];
+    int[] histogramR = new int[256];
+    int[] histogramG = new int[256];
+    int[] histogramB = new int[256];
     /** Creates new form Plotno */
     public Plotno() {
         obrazek = null;
@@ -130,6 +141,110 @@ public class Plotno extends javax.swing.JPanel {
         BufferedImage nowy_obrazek = new BufferedImage(obrazek.getWidth(), obrazek.getHeight(), obrazek.getType());
         op.filter(obrazek, nowy_obrazek);
         obrazek = nowy_obrazek;
+        repaint();
+    }
+    public void ObliczHistogram()
+    {
+        for(int i = 0; i < 256; i++){
+            histogram[i] = 0;
+            histogramR[i] = 0;
+            histogramG[i] = 0;
+            histogramB[i] = 0;
+        }
+
+        Color tempColor = null;
+        for(int i = 0; i < obrazek.getHeight(); i++)
+            for(int j = 0; j < obrazek.getWidth(); j++)
+            {
+                tempColor = new Color(obrazek.getRGB(j, i));
+                //histogram[najwiekszy(tempColor.getRed(), tempColor.getGreen(), tempColor.getBlue())]++;
+                histogram[(tempColor.getRed()+tempColor.getGreen()+tempColor.getBlue())/3]++; //suma na 3 = ogolna jasnosc?
+                histogramR[tempColor.getRed()]++;
+                histogramG[tempColor.getGreen()]++;
+                histogramB[tempColor.getBlue()]++;
+            }
+    }
+    
+    private static int najwiekszy(int num1, int num2, int num3)
+    {
+        int najwiekszy = num1;
+        if(num2 > najwiekszy)
+            najwiekszy = num2;
+        else if(num3 > najwiekszy)
+            najwiekszy = num3;
+        
+        return najwiekszy;
+    }
+    public void wyrownanie(){
+        int[] valueRed = new int[256];
+        int[] valueGreen = new int[256];
+        int[] valueBlue = new int[256];
+
+        Color tempColor = null;
+        for(int i = 0; i < obrazek.getHeight(); i++)
+            for(int j = 0; j < obrazek.getWidth(); j++)
+            {
+                tempColor = new Color(obrazek.getRGB(j, i));
+                valueRed[tempColor.getRed()]++;
+                valueGreen[tempColor.getGreen()]++;
+                valueBlue[tempColor.getBlue()]++;
+            }
+
+        int number = obrazek.getHeight() * obrazek.getWidth();
+
+        //float[] probability = new float[256];
+        float[] probabilityr = new float[256];
+        float[] probabilityg = new float[256];
+        float[] probabilityb = new float[256];
+        for(int i = 0; i < 256; i++)
+        {
+            //probability[i] = (((float)value[i])/number) * 256;
+            probabilityr[i] = (((float)valueRed[i])/number) * 255;
+            probabilityg[i] = (((float)valueGreen[i])/number) * 255;
+            probabilityb[i] = (((float)valueBlue[i])/number) * 255;
+        }
+
+
+        //byte[] sk = new byte[256];
+        byte[] skR = new byte[256];
+        byte[] skG = new byte[256];
+        byte[] skB = new byte[256];
+
+        //sk[0] = (byte)probability[0];
+        skR[0] = (byte)probabilityr[0];
+        skG[0] = (byte)probabilityg[0];
+        skB[0] = (byte)probabilityb[0];
+
+        for(int i = 1; i < 256; i++)
+        {
+            //probability[i] = probability[i-1] + probability[i];
+            //sk[i] = (byte)probability[i];
+            probabilityr[i] = probabilityr[i-1] + probabilityr[i];
+            skR[i] = (byte)probabilityr[i];
+            probabilityg[i] = probabilityg[i-1] + probabilityg[i];
+            skG[i] = (byte)probabilityg[i];
+            probabilityb[i] = probabilityb[i-1] + probabilityb[i];
+            skB[i] = (byte)probabilityb[i];
+        }
+        
+        byte[][] tab = { skR, skG, skB };
+        LookupOp op =  new LookupOp(new ByteLookupTable(0, tab), null);
+        BufferedImage nowy_obrazek = new BufferedImage(obrazek.getWidth(), obrazek.getHeight(), obrazek.getType());
+        op.filter(obrazek, nowy_obrazek);
+        obrazek = nowy_obrazek;
+        repaint();
+    }
+    public void naCzarnoBialy(){
+        ColorConvertOp cco = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
+        obrazek = cco.filter(obrazek, null);
+    }
+    public void Binaryzacja(Float prog){
+        naCzarnoBialy();
+        
+        Histogram his = (Histogram)JAI.create("histogram", obrazek).getProperty("histogram");
+        double[] threshold = his.getPTileThreshold(prog);
+        
+        obrazek = JAI.create("binarize", obrazek, threshold[0]).getAsBufferedImage();
         repaint();
     }
 }
