@@ -127,8 +127,8 @@ public class SelerShopView extends FrameView {
         int y = Integer.parseInt(rozmiarYSpinner.getValue().toString());
         int a,b;
         for (Component c : panelMacierzy.getComponents()){
-            a = Integer.parseInt(((JTextField)c).getName().substring(7, 8));
-            b = Integer.parseInt(((JTextField)c).getName().substring(8, 9));
+            a = Integer.parseInt(((JTextField)c).getName().substring(8, 9));
+            b = Integer.parseInt(((JTextField)c).getName().substring(7, 8));
             if(a < x && b < y){
                 ((JTextField)c).setEnabled(true);
             } else {
@@ -143,10 +143,11 @@ public class SelerShopView extends FrameView {
         float[] m = new float[rozmiarX*rozmiarY];
         int a=0,b=0, i=0, j=0;
         for (Component c : panelMacierzy.getComponents()){
-            a = Integer.parseInt(((JTextField)c).getName().substring(7, 8));
-            b = Integer.parseInt(((JTextField)c).getName().substring(8, 9));
+            a = Integer.parseInt(((JTextField)c).getName().substring(8, 9));
+            b = Integer.parseInt(((JTextField)c).getName().substring(7, 8));
             if(a < rozmiarX && b < rozmiarY){
-                m[i+j]= new Float(((JTextField)c).getText());
+                m[a*rozmiarX+b]= Float.parseFloat(((JTextField)c).getText());
+                System.out.println("x="+a + ", y="+b+", z="+ Float.parseFloat(((JTextField)c).getText()));
             }
             i++; j++;
             if(i >= rozmiarX) i = 0;
@@ -1474,8 +1475,10 @@ public class SelerShopView extends FrameView {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu2ActionPerformed
     private void wlasnyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wlasnyActionPerformed
-           pobierzMacierz();
-           plotno.Splot(macierz, rozmiarX, rozmiarY);
+        pobierzMacierz();
+        for(int i=0; i<macierz.length;i++)
+            System.out.print(macierz[i]+ ", ");
+        plotno.Splot(macierz, rozmiarX, rozmiarY);
     }//GEN-LAST:event_wlasnyActionPerformed
 
     private void obliczHistogramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obliczHistogramActionPerformed
