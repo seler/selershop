@@ -5,6 +5,7 @@
 package selershop;
 
 import java.awt.Color;
+import java.awt.Component;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -24,6 +25,7 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import selershop.Plotno;
 
@@ -36,6 +38,7 @@ public class SelerShopView extends FrameView {
         super(app);
 
         initComponents();
+        ustawInputy();
         //HistogramKanal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Wszystkie", "Czerwony", "Zielony", "Niebieski" }));
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
@@ -118,6 +121,39 @@ public class SelerShopView extends FrameView {
             return false;
         }
     }
+    
+    private void ustawInputy(){
+        int x = Integer.parseInt(rozmiarXSpinner.getValue().toString());
+        int y = Integer.parseInt(rozmiarYSpinner.getValue().toString());
+        int a,b;
+        for (Component c : panelMacierzy.getComponents()){
+            a = Integer.parseInt(((JTextField)c).getName().substring(7, 8));
+            b = Integer.parseInt(((JTextField)c).getName().substring(8, 9));
+            if(a < x && b < y){
+                ((JTextField)c).setEnabled(true);
+            } else {
+                ((JTextField)c).setEnabled(false);
+            }
+        }
+    }
+    
+    private void pobierzMacierz(){
+        rozmiarX = Integer.parseInt(rozmiarXSpinner.getValue().toString());
+        rozmiarY = Integer.parseInt(rozmiarYSpinner.getValue().toString());
+        float[] m = new float[rozmiarX*rozmiarY];
+        int a=0,b=0, i=0, j=0;
+        for (Component c : panelMacierzy.getComponents()){
+            a = Integer.parseInt(((JTextField)c).getName().substring(7, 8));
+            b = Integer.parseInt(((JTextField)c).getName().substring(8, 9));
+            if(a < rozmiarX && b < rozmiarY){
+                m[i+j]= new Float(((JTextField)c).getText());
+            }
+            i++; j++;
+            if(i >= rozmiarX) i = 0;
+            if(j >= rozmiarY) j = 0;
+        }
+        macierz =  m;
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -138,6 +174,92 @@ public class SelerShopView extends FrameView {
         histogramPanelG = new myprzegladarka.histogramPanel();
         histogramPanelB = new myprzegladarka.histogramPanel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        rozmiarXSpinner = new javax.swing.JSpinner();
+        rozmiarYSpinner = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
+        panelMacierzy = new javax.swing.JPanel();
+        macierz00 = new javax.swing.JTextField();
+        macierz01 = new javax.swing.JTextField();
+        macierz02 = new javax.swing.JTextField();
+        macierz03 = new javax.swing.JTextField();
+        macierz04 = new javax.swing.JTextField();
+        macierz05 = new javax.swing.JTextField();
+        macierz06 = new javax.swing.JTextField();
+        macierz07 = new javax.swing.JTextField();
+        macierz08 = new javax.swing.JTextField();
+        macierz10 = new javax.swing.JTextField();
+        macierz11 = new javax.swing.JTextField();
+        macierz12 = new javax.swing.JTextField();
+        macierz13 = new javax.swing.JTextField();
+        macierz14 = new javax.swing.JTextField();
+        macierz15 = new javax.swing.JTextField();
+        macierz16 = new javax.swing.JTextField();
+        macierz17 = new javax.swing.JTextField();
+        macierz18 = new javax.swing.JTextField();
+        macierz20 = new javax.swing.JTextField();
+        macierz21 = new javax.swing.JTextField();
+        macierz22 = new javax.swing.JTextField();
+        macierz23 = new javax.swing.JTextField();
+        macierz24 = new javax.swing.JTextField();
+        macierz25 = new javax.swing.JTextField();
+        macierz26 = new javax.swing.JTextField();
+        macierz27 = new javax.swing.JTextField();
+        macierz28 = new javax.swing.JTextField();
+        macierz30 = new javax.swing.JTextField();
+        macierz31 = new javax.swing.JTextField();
+        macierz32 = new javax.swing.JTextField();
+        macierz33 = new javax.swing.JTextField();
+        macierz34 = new javax.swing.JTextField();
+        macierz35 = new javax.swing.JTextField();
+        macierz36 = new javax.swing.JTextField();
+        macierz37 = new javax.swing.JTextField();
+        macierz38 = new javax.swing.JTextField();
+        macierz40 = new javax.swing.JTextField();
+        macierz41 = new javax.swing.JTextField();
+        macierz42 = new javax.swing.JTextField();
+        macierz43 = new javax.swing.JTextField();
+        macierz44 = new javax.swing.JTextField();
+        macierz45 = new javax.swing.JTextField();
+        macierz46 = new javax.swing.JTextField();
+        macierz47 = new javax.swing.JTextField();
+        macierz48 = new javax.swing.JTextField();
+        macierz50 = new javax.swing.JTextField();
+        macierz51 = new javax.swing.JTextField();
+        macierz52 = new javax.swing.JTextField();
+        macierz53 = new javax.swing.JTextField();
+        macierz54 = new javax.swing.JTextField();
+        macierz55 = new javax.swing.JTextField();
+        macierz56 = new javax.swing.JTextField();
+        macierz57 = new javax.swing.JTextField();
+        macierz58 = new javax.swing.JTextField();
+        macierz68 = new javax.swing.JTextField();
+        macierz67 = new javax.swing.JTextField();
+        macierz66 = new javax.swing.JTextField();
+        macierz65 = new javax.swing.JTextField();
+        macierz64 = new javax.swing.JTextField();
+        macierz63 = new javax.swing.JTextField();
+        macierz62 = new javax.swing.JTextField();
+        macierz61 = new javax.swing.JTextField();
+        macierz60 = new javax.swing.JTextField();
+        macierz78 = new javax.swing.JTextField();
+        macierz77 = new javax.swing.JTextField();
+        macierz76 = new javax.swing.JTextField();
+        macierz75 = new javax.swing.JTextField();
+        macierz74 = new javax.swing.JTextField();
+        macierz73 = new javax.swing.JTextField();
+        macierz72 = new javax.swing.JTextField();
+        macierz71 = new javax.swing.JTextField();
+        macierz70 = new javax.swing.JTextField();
+        macierz88 = new javax.swing.JTextField();
+        macierz87 = new javax.swing.JTextField();
+        macierz86 = new javax.swing.JTextField();
+        macierz85 = new javax.swing.JTextField();
+        macierz84 = new javax.swing.JTextField();
+        macierz83 = new javax.swing.JTextField();
+        macierz82 = new javax.swing.JTextField();
+        macierz80 = new javax.swing.JTextField();
+        macierz81 = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         otworz = new javax.swing.JMenuItem();
@@ -163,8 +285,10 @@ public class SelerShopView extends FrameView {
         stiffness = new javax.swing.JMenuItem();
         wlasny = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        erozja = new javax.swing.JMenuItem();
+        dylatacja = new javax.swing.JMenuItem();
+        otwarcie = new javax.swing.JMenuItem();
+        zamkniecie = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         wyrownanie = new javax.swing.JMenuItem();
         binaryzacja = new javax.swing.JMenuItem();
@@ -285,15 +409,581 @@ public class SelerShopView extends FrameView {
 
         jPanel1.setName("jPanel1"); // NOI18N
 
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        rozmiarXSpinner.setModel(new javax.swing.SpinnerNumberModel(3, 1, 9, 1));
+        rozmiarXSpinner.setName("rozmiarXSpinner"); // NOI18N
+        rozmiarXSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rozmiarXSpinnerStateChanged(evt);
+            }
+        });
+
+        rozmiarYSpinner.setModel(new javax.swing.SpinnerNumberModel(3, 1, 9, 1));
+        rozmiarYSpinner.setName("rozmiarYSpinner"); // NOI18N
+        rozmiarYSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rozmiarYSpinnerStateChanged(evt);
+            }
+        });
+
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        panelMacierzy.setName("panelMacierzy"); // NOI18N
+
+        macierz00.setText(resourceMap.getString("macierz00.text")); // NOI18N
+        macierz00.setName("macierz00"); // NOI18N
+
+        macierz01.setText(resourceMap.getString("macierz01.text")); // NOI18N
+        macierz01.setName("macierz01"); // NOI18N
+
+        macierz02.setText(resourceMap.getString("macierz02.text")); // NOI18N
+        macierz02.setName("macierz02"); // NOI18N
+
+        macierz03.setText(resourceMap.getString("macierz03.text")); // NOI18N
+        macierz03.setName("macierz03"); // NOI18N
+
+        macierz04.setText(resourceMap.getString("macierz04.text")); // NOI18N
+        macierz04.setName("macierz04"); // NOI18N
+
+        macierz05.setText(resourceMap.getString("macierz05.text")); // NOI18N
+        macierz05.setName("macierz05"); // NOI18N
+
+        macierz06.setText(resourceMap.getString("macierz06.text")); // NOI18N
+        macierz06.setName("macierz06"); // NOI18N
+
+        macierz07.setText(resourceMap.getString("macierz07.text")); // NOI18N
+        macierz07.setName("macierz07"); // NOI18N
+
+        macierz08.setText(resourceMap.getString("macierz08.text")); // NOI18N
+        macierz08.setName("macierz08"); // NOI18N
+
+        macierz10.setText(resourceMap.getString("macierz10.text")); // NOI18N
+        macierz10.setName("macierz10"); // NOI18N
+
+        macierz11.setText(resourceMap.getString("macierz11.text")); // NOI18N
+        macierz11.setName("macierz11"); // NOI18N
+
+        macierz12.setText(resourceMap.getString("macierz12.text")); // NOI18N
+        macierz12.setName("macierz12"); // NOI18N
+
+        macierz13.setText(resourceMap.getString("macierz13.text")); // NOI18N
+        macierz13.setName("macierz13"); // NOI18N
+
+        macierz14.setText(resourceMap.getString("macierz14.text")); // NOI18N
+        macierz14.setName("macierz14"); // NOI18N
+
+        macierz15.setText(resourceMap.getString("macierz15.text")); // NOI18N
+        macierz15.setName("macierz15"); // NOI18N
+
+        macierz16.setText(resourceMap.getString("macierz16.text")); // NOI18N
+        macierz16.setName("macierz16"); // NOI18N
+
+        macierz17.setText(resourceMap.getString("macierz17.text")); // NOI18N
+        macierz17.setName("macierz17"); // NOI18N
+
+        macierz18.setText(resourceMap.getString("macierz18.text")); // NOI18N
+        macierz18.setName("macierz18"); // NOI18N
+
+        macierz20.setText(resourceMap.getString("macierz20.text")); // NOI18N
+        macierz20.setName("macierz20"); // NOI18N
+
+        macierz21.setText(resourceMap.getString("macierz21.text")); // NOI18N
+        macierz21.setName("macierz21"); // NOI18N
+
+        macierz22.setText(resourceMap.getString("macierz22.text")); // NOI18N
+        macierz22.setName("macierz22"); // NOI18N
+
+        macierz23.setText(resourceMap.getString("macierz23.text")); // NOI18N
+        macierz23.setName("macierz23"); // NOI18N
+
+        macierz24.setText(resourceMap.getString("macierz24.text")); // NOI18N
+        macierz24.setName("macierz24"); // NOI18N
+
+        macierz25.setText(resourceMap.getString("macierz25.text")); // NOI18N
+        macierz25.setName("macierz25"); // NOI18N
+
+        macierz26.setText(resourceMap.getString("macierz26.text")); // NOI18N
+        macierz26.setName("macierz26"); // NOI18N
+
+        macierz27.setText(resourceMap.getString("macierz27.text")); // NOI18N
+        macierz27.setName("macierz27"); // NOI18N
+
+        macierz28.setText(resourceMap.getString("macierz28.text")); // NOI18N
+        macierz28.setName("macierz28"); // NOI18N
+
+        macierz30.setText(resourceMap.getString("macierz30.text")); // NOI18N
+        macierz30.setName("macierz30"); // NOI18N
+
+        macierz31.setText(resourceMap.getString("macierz31.text")); // NOI18N
+        macierz31.setName("macierz31"); // NOI18N
+
+        macierz32.setText(resourceMap.getString("macierz32.text")); // NOI18N
+        macierz32.setName("macierz32"); // NOI18N
+
+        macierz33.setText(resourceMap.getString("macierz33.text")); // NOI18N
+        macierz33.setName("macierz33"); // NOI18N
+
+        macierz34.setText(resourceMap.getString("macierz34.text")); // NOI18N
+        macierz34.setName("macierz34"); // NOI18N
+
+        macierz35.setText(resourceMap.getString("macierz35.text")); // NOI18N
+        macierz35.setName("macierz35"); // NOI18N
+
+        macierz36.setText(resourceMap.getString("macierz36.text")); // NOI18N
+        macierz36.setName("macierz36"); // NOI18N
+
+        macierz37.setText(resourceMap.getString("macierz37.text")); // NOI18N
+        macierz37.setName("macierz37"); // NOI18N
+
+        macierz38.setText(resourceMap.getString("macierz38.text")); // NOI18N
+        macierz38.setName("macierz38"); // NOI18N
+
+        macierz40.setText(resourceMap.getString("macierz40.text")); // NOI18N
+        macierz40.setName("macierz40"); // NOI18N
+
+        macierz41.setText(resourceMap.getString("macierz41.text")); // NOI18N
+        macierz41.setName("macierz41"); // NOI18N
+
+        macierz42.setText(resourceMap.getString("macierz42.text")); // NOI18N
+        macierz42.setName("macierz42"); // NOI18N
+
+        macierz43.setText(resourceMap.getString("macierz43.text")); // NOI18N
+        macierz43.setName("macierz43"); // NOI18N
+
+        macierz44.setText(resourceMap.getString("macierz44.text")); // NOI18N
+        macierz44.setName("macierz44"); // NOI18N
+
+        macierz45.setText(resourceMap.getString("macierz45.text")); // NOI18N
+        macierz45.setName("macierz45"); // NOI18N
+
+        macierz46.setText(resourceMap.getString("macierz46.text")); // NOI18N
+        macierz46.setName("macierz46"); // NOI18N
+
+        macierz47.setText(resourceMap.getString("macierz47.text")); // NOI18N
+        macierz47.setName("macierz47"); // NOI18N
+
+        macierz48.setText(resourceMap.getString("macierz48.text")); // NOI18N
+        macierz48.setName("macierz48"); // NOI18N
+
+        macierz50.setText(resourceMap.getString("macierz50.text")); // NOI18N
+        macierz50.setName("macierz50"); // NOI18N
+
+        macierz51.setText(resourceMap.getString("macierz51.text")); // NOI18N
+        macierz51.setName("macierz51"); // NOI18N
+
+        macierz52.setText(resourceMap.getString("macierz52.text")); // NOI18N
+        macierz52.setName("macierz52"); // NOI18N
+
+        macierz53.setText(resourceMap.getString("macierz53.text")); // NOI18N
+        macierz53.setName("macierz53"); // NOI18N
+
+        macierz54.setText(resourceMap.getString("macierz54.text")); // NOI18N
+        macierz54.setName("macierz54"); // NOI18N
+
+        macierz55.setText(resourceMap.getString("macierz55.text")); // NOI18N
+        macierz55.setName("macierz55"); // NOI18N
+
+        macierz56.setText(resourceMap.getString("macierz56.text")); // NOI18N
+        macierz56.setName("macierz56"); // NOI18N
+
+        macierz57.setText(resourceMap.getString("macierz57.text")); // NOI18N
+        macierz57.setName("macierz57"); // NOI18N
+
+        macierz58.setText(resourceMap.getString("macierz58.text")); // NOI18N
+        macierz58.setName("macierz58"); // NOI18N
+
+        macierz68.setText(resourceMap.getString("macierz68.text")); // NOI18N
+        macierz68.setName("macierz68"); // NOI18N
+
+        macierz67.setText(resourceMap.getString("macierz67.text")); // NOI18N
+        macierz67.setName("macierz67"); // NOI18N
+
+        macierz66.setText(resourceMap.getString("macierz66.text")); // NOI18N
+        macierz66.setName("macierz66"); // NOI18N
+
+        macierz65.setText(resourceMap.getString("macierz65.text")); // NOI18N
+        macierz65.setName("macierz65"); // NOI18N
+
+        macierz64.setText(resourceMap.getString("macierz64.text")); // NOI18N
+        macierz64.setName("macierz64"); // NOI18N
+
+        macierz63.setText(resourceMap.getString("macierz63.text")); // NOI18N
+        macierz63.setName("macierz63"); // NOI18N
+
+        macierz62.setText(resourceMap.getString("macierz62.text")); // NOI18N
+        macierz62.setName("macierz62"); // NOI18N
+
+        macierz61.setText(resourceMap.getString("macierz61.text")); // NOI18N
+        macierz61.setName("macierz61"); // NOI18N
+
+        macierz60.setText(resourceMap.getString("macierz60.text")); // NOI18N
+        macierz60.setName("macierz60"); // NOI18N
+
+        macierz78.setText(resourceMap.getString("macierz78.text")); // NOI18N
+        macierz78.setName("macierz78"); // NOI18N
+
+        macierz77.setText(resourceMap.getString("macierz77.text")); // NOI18N
+        macierz77.setName("macierz77"); // NOI18N
+
+        macierz76.setText(resourceMap.getString("macierz76.text")); // NOI18N
+        macierz76.setName("macierz76"); // NOI18N
+
+        macierz75.setText(resourceMap.getString("macierz75.text")); // NOI18N
+        macierz75.setName("macierz75"); // NOI18N
+
+        macierz74.setText(resourceMap.getString("macierz74.text")); // NOI18N
+        macierz74.setName("macierz74"); // NOI18N
+
+        macierz73.setText(resourceMap.getString("macierz73.text")); // NOI18N
+        macierz73.setName("macierz73"); // NOI18N
+
+        macierz72.setText(resourceMap.getString("macierz72.text")); // NOI18N
+        macierz72.setName("macierz72"); // NOI18N
+
+        macierz71.setText(resourceMap.getString("macierz71.text")); // NOI18N
+        macierz71.setName("macierz71"); // NOI18N
+
+        macierz70.setText(resourceMap.getString("macierz70.text")); // NOI18N
+        macierz70.setName("macierz70"); // NOI18N
+
+        macierz88.setText(resourceMap.getString("macierz88.text")); // NOI18N
+        macierz88.setName("macierz88"); // NOI18N
+
+        macierz87.setText(resourceMap.getString("macierz87.text")); // NOI18N
+        macierz87.setName("macierz87"); // NOI18N
+
+        macierz86.setText(resourceMap.getString("macierz86.text")); // NOI18N
+        macierz86.setName("macierz86"); // NOI18N
+
+        macierz85.setText(resourceMap.getString("macierz85.text")); // NOI18N
+        macierz85.setName("macierz85"); // NOI18N
+
+        macierz84.setText(resourceMap.getString("macierz84.text")); // NOI18N
+        macierz84.setName("macierz84"); // NOI18N
+
+        macierz83.setText(resourceMap.getString("macierz83.text")); // NOI18N
+        macierz83.setName("macierz83"); // NOI18N
+
+        macierz82.setText(resourceMap.getString("macierz82.text")); // NOI18N
+        macierz82.setName("macierz82"); // NOI18N
+
+        macierz80.setText(resourceMap.getString("macierz80.text")); // NOI18N
+        macierz80.setName("macierz80"); // NOI18N
+
+        macierz81.setText(resourceMap.getString("macierz81.text")); // NOI18N
+        macierz81.setName("macierz81"); // NOI18N
+
+        javax.swing.GroupLayout panelMacierzyLayout = new javax.swing.GroupLayout(panelMacierzy);
+        panelMacierzy.setLayout(panelMacierzyLayout);
+        panelMacierzyLayout.setHorizontalGroup(
+            panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                        .addComponent(macierz00, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz01, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz02, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz03, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz04, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz05, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz06, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz07, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz08, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                        .addComponent(macierz10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz18, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                        .addComponent(macierz20, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz21, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz22, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz23, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz24, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz25, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz26, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz27, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz28, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                        .addComponent(macierz30, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz31, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz32, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz33, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz34, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz35, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz36, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz37, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz38, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                        .addComponent(macierz40, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz41, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz42, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz43, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz44, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz45, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz46, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz47, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz48, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                        .addComponent(macierz50, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz51, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz52, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz53, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz54, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz55, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz56, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz57, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz58, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                        .addComponent(macierz60, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz61, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz62, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz63, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz64, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz65, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz66, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz67, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz68, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                        .addComponent(macierz70, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz71, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz72, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz73, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz74, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz75, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz76, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz77, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz78, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMacierzyLayout.createSequentialGroup()
+                        .addComponent(macierz81, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz80, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz82, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz83, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz84, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz85, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz86, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz87, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(macierz88, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        panelMacierzyLayout.setVerticalGroup(
+            panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMacierzyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(macierz00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz06, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz07, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz08, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(macierz10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(macierz20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(macierz30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(macierz40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(macierz50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(macierz60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(macierz70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMacierzyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(macierz81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(macierz88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 322, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panelMacierzy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rozmiarXSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rozmiarYSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(rozmiarXSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(rozmiarYSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelMacierzy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(resourceMap.getString("jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
@@ -303,9 +993,9 @@ public class SelerShopView extends FrameView {
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,13 +1189,41 @@ public class SelerShopView extends FrameView {
         jMenu3.setText(resourceMap.getString("jMenu3.text")); // NOI18N
         jMenu3.setName("jMenu3"); // NOI18N
 
-        jMenuItem5.setText(resourceMap.getString("jMenuItem5.text")); // NOI18N
-        jMenuItem5.setName("jMenuItem5"); // NOI18N
-        jMenu3.add(jMenuItem5);
+        erozja.setText(resourceMap.getString("erozja.text")); // NOI18N
+        erozja.setName("erozja"); // NOI18N
+        erozja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                erozjaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(erozja);
 
-        jMenuItem6.setText(resourceMap.getString("jMenuItem6.text")); // NOI18N
-        jMenuItem6.setName("jMenuItem6"); // NOI18N
-        jMenu3.add(jMenuItem6);
+        dylatacja.setText(resourceMap.getString("dylatacja.text")); // NOI18N
+        dylatacja.setName("dylatacja"); // NOI18N
+        dylatacja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dylatacjaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(dylatacja);
+
+        otwarcie.setText(resourceMap.getString("otwarcie.text")); // NOI18N
+        otwarcie.setName("otwarcie"); // NOI18N
+        otwarcie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                otwarcieActionPerformed(evt);
+            }
+        });
+        jMenu3.add(otwarcie);
+
+        zamkniecie.setText(resourceMap.getString("zamkniecie.text")); // NOI18N
+        zamkniecie.setName("zamkniecie"); // NOI18N
+        zamkniecie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zamkniecieActionPerformed(evt);
+            }
+        });
+        jMenu3.add(zamkniecie);
 
         menuBar.add(jMenu3);
 
@@ -644,7 +1362,7 @@ public class SelerShopView extends FrameView {
             0.00000067f, 0.00002292f, 0.00019117f, 0.00038771f, 0.00019117f, 0.00002292f, 0.00000067f
         };
         int rozmiar = 7;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_gaussActionPerformed
 
     private void laplacianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laplacianActionPerformed
@@ -658,7 +1376,7 @@ public class SelerShopView extends FrameView {
             0f, 0f, 0f, -1f, 0f, 1f
         };
         int rozmiar = 6;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_laplacianActionPerformed
 
     private void usredniajacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usredniajacyActionPerformed
@@ -669,7 +1387,7 @@ public class SelerShopView extends FrameView {
             1/9f,1/9f,1/9f
         };
         int rozmiar = 3;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_usredniajacyActionPerformed
 
     private void lp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lp2ActionPerformed
@@ -680,7 +1398,7 @@ public class SelerShopView extends FrameView {
             1/16f,1/16f,1/16f
         };
         int rozmiar = 3;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_lp2ActionPerformed
 
     private void gorny1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gorny1ActionPerformed
@@ -691,7 +1409,7 @@ public class SelerShopView extends FrameView {
             -1f,-1f,-1f
         };
         int rozmiar = 3;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_gorny1ActionPerformed
 
     private void gorny2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gorny2ActionPerformed
@@ -702,7 +1420,7 @@ public class SelerShopView extends FrameView {
             1f,-2f,1f
         };
         int rozmiar = 3;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_gorny2ActionPerformed
 
     private void gorny3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gorny3ActionPerformed
@@ -713,7 +1431,7 @@ public class SelerShopView extends FrameView {
             0f,-1/16f,0f
         };
         int rozmiar = 3;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_gorny3ActionPerformed
 
     private void krawedziePoziomyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_krawedziePoziomyActionPerformed
@@ -724,7 +1442,7 @@ public class SelerShopView extends FrameView {
             0f,0f,0f
         };
         int rozmiar = 3;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_krawedziePoziomyActionPerformed
 
     private void krawedziePionowyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_krawedziePionowyActionPerformed
@@ -735,7 +1453,7 @@ public class SelerShopView extends FrameView {
             0f,0f,0f
         };
         int rozmiar = 3;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_krawedziePionowyActionPerformed
 
     private void stiffnessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stiffnessActionPerformed
@@ -749,14 +1467,15 @@ public class SelerShopView extends FrameView {
             0f, 0f, 0f, -1f, 0f, 1f
         };
         int rozmiar = 6;
-        plotno.Splot(matrix, rozmiar);
+        plotno.Splot(matrix, rozmiar, rozmiar);
     }//GEN-LAST:event_stiffnessActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu2ActionPerformed
     private void wlasnyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wlasnyActionPerformed
-
+           pobierzMacierz();
+           plotno.Splot(macierz, rozmiarX, rozmiarY);
     }//GEN-LAST:event_wlasnyActionPerformed
 
     private void obliczHistogramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obliczHistogramActionPerformed
@@ -773,14 +1492,45 @@ public class SelerShopView extends FrameView {
 
     private void binaryzacjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_binaryzacjaActionPerformed
         if(this.pobierzWartosc()){
-            Float a = new Float(0);
             plotno.Binaryzacja(wartosc);
         }
     }//GEN-LAST:event_binaryzacjaActionPerformed
 
+    private void erozjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_erozjaActionPerformed
+        pobierzMacierz();
+        plotno.Erozja(macierz, rozmiarX, rozmiarY);
+    }//GEN-LAST:event_erozjaActionPerformed
+
+    private void dylatacjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dylatacjaActionPerformed
+        pobierzMacierz();
+        plotno.Dylatacja(macierz, rozmiarX, rozmiarY);
+    }//GEN-LAST:event_dylatacjaActionPerformed
+
+    private void otwarcieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otwarcieActionPerformed
+        pobierzMacierz();
+        plotno.Erozja(macierz, rozmiarX, rozmiarY);
+        plotno.Dylatacja(macierz, rozmiarX, rozmiarY);
+    }//GEN-LAST:event_otwarcieActionPerformed
+
+    private void zamkniecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zamkniecieActionPerformed
+        pobierzMacierz();
+        plotno.Dylatacja(macierz, rozmiarX, rozmiarY);
+        plotno.Erozja(macierz, rozmiarX, rozmiarY);
+    }//GEN-LAST:event_zamkniecieActionPerformed
+
+    private void rozmiarXSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rozmiarXSpinnerStateChanged
+        ustawInputy();
+    }//GEN-LAST:event_rozmiarXSpinnerStateChanged
+
+    private void rozmiarYSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rozmiarYSpinnerStateChanged
+        ustawInputy();
+    }//GEN-LAST:event_rozmiarYSpinnerStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem binaryzacja;
     private javax.swing.JMenuItem dodawanie;
+    private javax.swing.JMenuItem dylatacja;
+    private javax.swing.JMenuItem erozja;
     private javax.swing.JMenuItem gauss;
     private javax.swing.JMenuItem gorny1;
     private javax.swing.JMenuItem gorny2;
@@ -789,12 +1539,12 @@ public class SelerShopView extends FrameView {
     private myprzegladarka.histogramPanel histogramPanelB;
     private myprzegladarka.histogramPanel histogramPanelG;
     private myprzegladarka.histogramPanel histogramPanelR;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JPopupMenu.Separator jSeparator1;
@@ -805,15 +1555,100 @@ public class SelerShopView extends FrameView {
     private javax.swing.JMenuItem krawedziePoziomy;
     private javax.swing.JMenuItem laplacian;
     private javax.swing.JMenuItem lp2;
+    private javax.swing.JTextField macierz00;
+    private javax.swing.JTextField macierz01;
+    private javax.swing.JTextField macierz02;
+    private javax.swing.JTextField macierz03;
+    private javax.swing.JTextField macierz04;
+    private javax.swing.JTextField macierz05;
+    private javax.swing.JTextField macierz06;
+    private javax.swing.JTextField macierz07;
+    private javax.swing.JTextField macierz08;
+    private javax.swing.JTextField macierz10;
+    private javax.swing.JTextField macierz11;
+    private javax.swing.JTextField macierz12;
+    private javax.swing.JTextField macierz13;
+    private javax.swing.JTextField macierz14;
+    private javax.swing.JTextField macierz15;
+    private javax.swing.JTextField macierz16;
+    private javax.swing.JTextField macierz17;
+    private javax.swing.JTextField macierz18;
+    private javax.swing.JTextField macierz20;
+    private javax.swing.JTextField macierz21;
+    private javax.swing.JTextField macierz22;
+    private javax.swing.JTextField macierz23;
+    private javax.swing.JTextField macierz24;
+    private javax.swing.JTextField macierz25;
+    private javax.swing.JTextField macierz26;
+    private javax.swing.JTextField macierz27;
+    private javax.swing.JTextField macierz28;
+    private javax.swing.JTextField macierz30;
+    private javax.swing.JTextField macierz31;
+    private javax.swing.JTextField macierz32;
+    private javax.swing.JTextField macierz33;
+    private javax.swing.JTextField macierz34;
+    private javax.swing.JTextField macierz35;
+    private javax.swing.JTextField macierz36;
+    private javax.swing.JTextField macierz37;
+    private javax.swing.JTextField macierz38;
+    private javax.swing.JTextField macierz40;
+    private javax.swing.JTextField macierz41;
+    private javax.swing.JTextField macierz42;
+    private javax.swing.JTextField macierz43;
+    private javax.swing.JTextField macierz44;
+    private javax.swing.JTextField macierz45;
+    private javax.swing.JTextField macierz46;
+    private javax.swing.JTextField macierz47;
+    private javax.swing.JTextField macierz48;
+    private javax.swing.JTextField macierz50;
+    private javax.swing.JTextField macierz51;
+    private javax.swing.JTextField macierz52;
+    private javax.swing.JTextField macierz53;
+    private javax.swing.JTextField macierz54;
+    private javax.swing.JTextField macierz55;
+    private javax.swing.JTextField macierz56;
+    private javax.swing.JTextField macierz57;
+    private javax.swing.JTextField macierz58;
+    private javax.swing.JTextField macierz60;
+    private javax.swing.JTextField macierz61;
+    private javax.swing.JTextField macierz62;
+    private javax.swing.JTextField macierz63;
+    private javax.swing.JTextField macierz64;
+    private javax.swing.JTextField macierz65;
+    private javax.swing.JTextField macierz66;
+    private javax.swing.JTextField macierz67;
+    private javax.swing.JTextField macierz68;
+    private javax.swing.JTextField macierz70;
+    private javax.swing.JTextField macierz71;
+    private javax.swing.JTextField macierz72;
+    private javax.swing.JTextField macierz73;
+    private javax.swing.JTextField macierz74;
+    private javax.swing.JTextField macierz75;
+    private javax.swing.JTextField macierz76;
+    private javax.swing.JTextField macierz77;
+    private javax.swing.JTextField macierz78;
+    private javax.swing.JTextField macierz80;
+    private javax.swing.JTextField macierz81;
+    private javax.swing.JTextField macierz82;
+    private javax.swing.JTextField macierz83;
+    private javax.swing.JTextField macierz84;
+    private javax.swing.JTextField macierz85;
+    private javax.swing.JTextField macierz86;
+    private javax.swing.JTextField macierz87;
+    private javax.swing.JTextField macierz88;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mnozenie;
     private javax.swing.JMenuItem obliczHistogram;
+    private javax.swing.JMenuItem otwarcie;
     private javax.swing.JMenuItem otworz;
+    private javax.swing.JPanel panelMacierzy;
     private javax.swing.JPanel panelnahistogramy;
     private selershop.Plotno plotno;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JMenuItem resetuj;
+    private javax.swing.JSpinner rozmiarXSpinner;
+    private javax.swing.JSpinner rozmiarYSpinner;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
@@ -821,6 +1656,7 @@ public class SelerShopView extends FrameView {
     private javax.swing.JMenuItem usredniajacy;
     private javax.swing.JMenuItem wlasny;
     private javax.swing.JMenuItem wyrownanie;
+    private javax.swing.JMenuItem zamkniecie;
     private javax.swing.JMenuItem zapisz;
     // End of variables declaration//GEN-END:variables
 
@@ -832,4 +1668,9 @@ public class SelerShopView extends FrameView {
 
     private JDialog aboutBox;
     private Float wartosc;
+    
+    float[] macierz;
+    int rozmiarX;
+    int rozmiarY;
+    
 }

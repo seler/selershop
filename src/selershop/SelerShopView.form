@@ -11,9 +11,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jScrollPane" pref="322" max="32767" attributes="0"/>
+                  <Component id="jScrollPane" pref="354" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" min="-2" pref="327" max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" min="-2" pref="295" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -185,7 +185,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Tablica Splot">
+                  <JTabbedPaneConstraints tabName="Macierz">
                     <Property name="tabTitle" type="java.lang.String" resourceKey="jPanel1.TabConstraints.tabTitle"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
@@ -194,15 +194,872 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="322" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="panelMacierzy" min="-2" max="-2" attributes="1"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rozmiarXSpinner" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rozmiarYSpinner" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="553" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rozmiarXSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rozmiarYSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="panelMacierzy" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="272" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
+                    <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSpinner" name="rozmiarXSpinner">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="3" maximum="9" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="rozmiarXSpinner" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rozmiarXSpinnerStateChanged"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JSpinner" name="rozmiarYSpinner">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="3" maximum="9" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="rozmiarYSpinner" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rozmiarYSpinnerStateChanged"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="jLabel2.text"/>
+                    <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JPanel" name="panelMacierzy">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="panelMacierzy" noResource="true"/>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="macierz00" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz01" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz02" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz03" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz04" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz05" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz06" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz07" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz08" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="macierz10" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz11" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz12" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz13" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz14" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz15" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz16" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz17" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz18" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="macierz20" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz21" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz22" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz23" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz24" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz25" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz26" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz27" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz28" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="macierz30" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz31" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz32" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz33" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz34" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz35" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz36" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz37" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz38" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="macierz40" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz41" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz42" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz43" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz44" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz45" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz46" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz47" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz48" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="macierz50" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz51" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz52" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz53" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz54" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz55" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz56" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz57" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz58" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="macierz60" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz61" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz62" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz63" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz64" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz65" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz66" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz67" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz68" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="macierz70" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz71" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz72" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz73" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz74" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz75" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz76" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz77" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz78" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="macierz81" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz80" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz82" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz83" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz84" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz85" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz86" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz87" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="macierz88" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="macierz00" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz01" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz02" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz03" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz04" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz05" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz06" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz07" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz08" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="macierz10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz18" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="macierz20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz25" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz27" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz28" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="macierz30" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz31" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz33" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz34" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz35" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz36" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz37" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz38" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="macierz40" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz41" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz42" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz43" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz44" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz45" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz46" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz47" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz48" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="macierz50" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz51" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz52" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz53" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz54" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz55" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz56" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz57" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz58" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="macierz60" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz61" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz62" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz63" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz64" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz65" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz66" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz67" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz68" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="macierz70" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz71" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz72" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz73" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz74" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz75" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz76" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz77" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz78" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="macierz81" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz80" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz82" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz83" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz84" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz85" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz86" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz87" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="macierz88" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="macierz00">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz00.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz00" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz01">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz01.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz01" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz02">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz02.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz02" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz03">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz03.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz03" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz04">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz04.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz04" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz05">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz05.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz05" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz06">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz06.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz06" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz07">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz07.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz07" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz08">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz08.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz08" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz10">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz10.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz10" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz11">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz11.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz11" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz12">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz12.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz12" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz13">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz13.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz13" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz14">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz14.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz14" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz15">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz15.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz15" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz16">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz16.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz16" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz17">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz17.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz17" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz18">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz18.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz18" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz20">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz20.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz20" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz21">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz21.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz21" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz22">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz22.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz22" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz23">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz23.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz23" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz24">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz24.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz24" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz25">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz25.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz25" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz26">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz26.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz26" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz27">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz27.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz27" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz28">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz28.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz28" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz30">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz30.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz30" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz31">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz31.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz31" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz32">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz32.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz32" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz33">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz33.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz33" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz34">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz34.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz34" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz35">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz35.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz35" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz36">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz36.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz36" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz37">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz37.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz37" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz38">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz38.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz38" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz40">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz40.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz40" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz41">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz41.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz41" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz42">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz42.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz42" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz43">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz43.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz43" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz44">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz44.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz44" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz45">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz45.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz45" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz46">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz46.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz46" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz47">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz47.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz47" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz48">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz48.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz48" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz50">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz50.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz50" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz51">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz51.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz51" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz52">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz52.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz52" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz53">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz53.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz53" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz54">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz54.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz54" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz55">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz55.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz55" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz56">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz56.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz56" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz57">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz57.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz57" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz58">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz58.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz58" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz68">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz68.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz68" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz67">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz67.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz67" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz66">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz66.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz66" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz65">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz65.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz65" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz64">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz64.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz64" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz63">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz63.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz63" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz62">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz62.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz62" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz61">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz61.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz61" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz60">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz60.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz60" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz78">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz78.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz78" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz77">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz77.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz77" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz76">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz76.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz76" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz75">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz75.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz75" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz74">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz74.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz74" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz73">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz73.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz73" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz72">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz72.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz72" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz71">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz71.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz71" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz70">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz70.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz70" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz88">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz88.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz88" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz87">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz87.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz87" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz86">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz86.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz86" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz85">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz85.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz85" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz84">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz84.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz84" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz83">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz83.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz83" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz82">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz82.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz82" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz80">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz80.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz80" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="macierz81">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="macierz81.text"/>
+                        <Property name="name" type="java.lang.String" value="macierz81" noResource="true"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
             </Container>
           </SubComponents>
         </Container>
@@ -434,17 +1291,41 @@
             <Property name="name" type="java.lang.String" value="jMenu3" noResource="true"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="erozja">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jMenuItem5.text"/>
-                <Property name="name" type="java.lang.String" value="jMenuItem5" noResource="true"/>
+                <Property name="text" type="java.lang.String" resourceKey="erozja.text"/>
+                <Property name="name" type="java.lang.String" value="erozja" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="erozjaActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+            <MenuItem class="javax.swing.JMenuItem" name="dylatacja">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="jMenuItem6.text"/>
-                <Property name="name" type="java.lang.String" value="jMenuItem6" noResource="true"/>
+                <Property name="text" type="java.lang.String" resourceKey="dylatacja.text"/>
+                <Property name="name" type="java.lang.String" value="dylatacja" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dylatacjaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="otwarcie">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="otwarcie.text"/>
+                <Property name="name" type="java.lang.String" value="otwarcie" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="otwarcieActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="zamkniecie">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="zamkniecie.text"/>
+                <Property name="name" type="java.lang.String" value="zamkniecie" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="zamkniecieActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

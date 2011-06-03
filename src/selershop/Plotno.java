@@ -19,6 +19,7 @@ import java.awt.image.ColorConvertOp;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 import java.awt.image.LookupOp;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -27,8 +28,11 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.image.RescaleOp;
+import java.awt.image.renderable.ParameterBlock;
 import javax.media.jai.Histogram;
 import javax.media.jai.JAI;
+import javax.media.jai.KernelJAI;
+import javax.media.jai.RenderedOp;
 /**
  *
  * @author Seler
@@ -134,9 +138,9 @@ public class Plotno extends javax.swing.JPanel {
         repaint();
     }
     
-    public void Splot(float[] matrix, int rozmiar)
+    public void Splot(float[] matrix, int rozmiarX, int rozmiarY)
     {
-        Kernel kernel = new Kernel(rozmiar, rozmiar, matrix);
+        Kernel kernel = new Kernel(rozmiarX, rozmiarY, matrix);
         ConvolveOp op = new ConvolveOp(kernel);
         BufferedImage nowy_obrazek = new BufferedImage(obrazek.getWidth(), obrazek.getHeight(), obrazek.getType());
         op.filter(obrazek, nowy_obrazek);
@@ -245,6 +249,30 @@ public class Plotno extends javax.swing.JPanel {
         double[] threshold = his.getPTileThreshold(prog);
         
         obrazek = JAI.create("binarize", obrazek, threshold[0]).getAsBufferedImage();
+        repaint();
+    }
+    public void Erozja(float[] macierz, int rozmiarX, int rozmiarY){
+        KernelJAI kernel = new KernelJAI(rozmiarX, rozmiarY, macierz);
+        
+        ParameterBlock pb = new ParameterBlock();
+        pb.addSource(obrazek);
+        pb.add(kernel);
+
+        RenderedImage tempRenderer = JAI.create("erode", pb);
+        RenderedOp toCreate = JAI.create("filestore", tempRenderer, "png");
+        obrazek =  toCreate.getAsBufferedImage();
+        repaint();
+    }
+    public void Dylatacja(float[] macierz, int rozmiarX, int rozmiarY){
+        KernelJAI kernel = new KernelJAI(rozmiarX, rozmiarY, macierz);
+        
+        ParameterBlock pb = new ParameterBlock();
+        pb.addSource(obrazek);
+        pb.add(kernel);
+
+        RenderedImage tempRenderer = JAI.create("dilate", pb);
+        RenderedOp toCreate = JAI.create("filestore", tempRenderer, "png");
+        obrazek =  toCreate.getAsBufferedImage();
         repaint();
     }
 }
