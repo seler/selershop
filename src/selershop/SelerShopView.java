@@ -146,7 +146,7 @@ public class SelerShopView extends FrameView {
             a = Integer.parseInt(((JTextField)c).getName().substring(8, 9));
             b = Integer.parseInt(((JTextField)c).getName().substring(7, 8));
             if(a < rozmiarX && b < rozmiarY){
-                m[a*rozmiarX+b]= Float.parseFloat(((JTextField)c).getText());
+                m[b*rozmiarX+a]= Float.parseFloat(((JTextField)c).getText());
                 System.out.println("x="+a + ", y="+b+", z="+ Float.parseFloat(((JTextField)c).getText()));
             }
             i++; j++;
@@ -1500,6 +1500,7 @@ public class SelerShopView extends FrameView {
     }//GEN-LAST:event_binaryzacjaActionPerformed
 
     private void erozjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_erozjaActionPerformed
+        // http://atol.am.gdynia.pl/tc/Radzienski/morfologiczne.htm
         pobierzMacierz();
         plotno.Erozja(macierz, rozmiarX, rozmiarY);
     }//GEN-LAST:event_erozjaActionPerformed
