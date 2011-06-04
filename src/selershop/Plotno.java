@@ -16,6 +16,7 @@ import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ByteLookupTable;
 import java.awt.image.ColorConvertOp;
+import java.awt.image.ColorModel;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 import java.awt.image.LookupOp;
@@ -39,8 +40,11 @@ import javax.media.jai.RenderedOp;
  */
 public class Plotno extends javax.swing.JPanel {
     File plik;
+    File drugiplik;
     BufferedImage obrazek;
+    BufferedImage drugiobrazek;
     int typ;
+    int drugityp;
     int[] histogram = new int[256];
     int[] histogramR = new int[256];
     int[] histogramG = new int[256];
@@ -48,7 +52,9 @@ public class Plotno extends javax.swing.JPanel {
     /** Creates new form Plotno */
     public Plotno() {
         obrazek = null;
+        drugiobrazek = null;
         plik = null;
+        drugiplik = null;
         setSize(800, 800);
         initComponents();
     }
@@ -99,6 +105,17 @@ public class Plotno extends javax.swing.JPanel {
                 }
             }
         repaint();
+    }
+    
+    public void OtworzDrugi() throws IOException{
+            JFileChooser chooser = new JFileChooser();
+            FileNameExtensionFilter filtr = new FileNameExtensionFilter("Pliki *.jpg *.png","jpg", "jpeg", "png");
+            chooser.setFileFilter(filtr);
+            int wynik = chooser.showOpenDialog(this);        
+            if (wynik == JFileChooser.APPROVE_OPTION) {
+                drugiplik = chooser.getSelectedFile();
+                drugiobrazek = ImageIO.read(drugiplik);
+            }
     }
     
     public void Resetuj() throws IOException
@@ -275,4 +292,56 @@ public class Plotno extends javax.swing.JPanel {
         obrazek =  toCreate.getAsBufferedImage();
         repaint();
     }
+    
+    public void DwaObrazy(boolean operacja){
+        
+        ColorModel cm = obrazek.getColorModel();
+        int w1 = obrazek.getWidth();
+        int h1 = obrazek.getHeight();
+        int w2 = drugiobrazek.getWidth();
+        int h2 = drugiobrazek.getHeight();
+        int width = w1;
+        int height = h1;
+        if (w2 < w1) width = w2;
+        if (h2 < h1) height = h2;
+        Color c1, c2;
+        
+        BufferedImage tempobraz = new BufferedImage(cm, cm.createCompatibleWritableRaster(width, height), cm.isAlphaPremultiplied(), null);
+
+        int r=0, g=0, b=0;
+        for(int i = 0; i < height; i++)
+            for(int j = 0; j < width; j++){
+                c1 = new Color(obrazek.getRGB(j, i));
+                c2 = new Color(drugiobrazek.getRGB(j, i));
+                if(operacja){
+                    r = DodajKolory(c1.getRed(), c2.getRed());
+                    g = DodajKolory(c1.getGreen(), c2.getGreen());
+                    b = DodajKolory(c1.getBlue(), c2.getBlue());
+                } else {
+                    r = OdejmijKolory(c1.getRed(), c2.getRed());
+                    g = OdejmijKolory(c1.getGreen(), c2.getGreen());
+                    b = OdejmijKolory(c1.getBlue(), c2.getBlue());
+                }
+                
+                tempobraz.setRGB(j, i, new Color(r,g,b,255).getRGB());
+            }
+        obrazek = tempobraz;
+        repaint();
+    }
+    
+    public void OdejmijObrazy(){
+        
+    }
+    
+    private int DodajKolory(int c1, int c2){
+        int c3 = c1+c2;
+        if(c3>255)c3=255;
+        return c3;
+    }
+    private int OdejmijKolory(int c1, int c2){
+        int c3 = c1-c2;
+        if(c3>255)c3=0;
+        return c3;
+    }
+    
 }

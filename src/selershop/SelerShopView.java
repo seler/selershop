@@ -294,6 +294,9 @@ public class SelerShopView extends FrameView {
         wyrownanie = new javax.swing.JMenuItem();
         binaryzacja = new javax.swing.JMenuItem();
         obliczHistogram = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        dodajobraz = new javax.swing.JMenuItem();
+        odejmijobraz = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
@@ -1261,6 +1264,29 @@ public class SelerShopView extends FrameView {
 
         menuBar.add(jMenu4);
 
+        jMenu5.setText(resourceMap.getString("jMenu5.text")); // NOI18N
+        jMenu5.setName("jMenu5"); // NOI18N
+
+        dodajobraz.setText(resourceMap.getString("dodajobraz.text")); // NOI18N
+        dodajobraz.setName("dodajobraz"); // NOI18N
+        dodajobraz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dodajobrazActionPerformed(evt);
+            }
+        });
+        jMenu5.add(dodajobraz);
+
+        odejmijobraz.setText(resourceMap.getString("odejmijobraz.text")); // NOI18N
+        odejmijobraz.setName("odejmijobraz"); // NOI18N
+        odejmijobraz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                odejmijobrazActionPerformed(evt);
+            }
+        });
+        jMenu5.add(odejmijobraz);
+
+        menuBar.add(jMenu5);
+
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
 
@@ -1530,8 +1556,31 @@ public class SelerShopView extends FrameView {
         ustawInputy();
     }//GEN-LAST:event_rozmiarYSpinnerStateChanged
 
+    private void dodajobrazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dodajobrazActionPerformed
+        try {
+            plotno.OtworzDrugi();
+        } catch (IOException ex) {
+            Logger.getLogger(SelerShopView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(plotno.drugiplik != null){
+            plotno.DwaObrazy(true); // true to dodawanie, false - odejmowanie
+        }
+    }//GEN-LAST:event_dodajobrazActionPerformed
+
+    private void odejmijobrazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odejmijobrazActionPerformed
+        try {
+            plotno.OtworzDrugi();
+        } catch (IOException ex) {
+            Logger.getLogger(SelerShopView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(plotno.drugiplik != null){
+            plotno.DwaObrazy(false); // true to dodawanie, false - odejmowanie
+        }
+    }//GEN-LAST:event_odejmijobrazActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem binaryzacja;
+    private javax.swing.JMenuItem dodajobraz;
     private javax.swing.JMenuItem dodawanie;
     private javax.swing.JMenuItem dylatacja;
     private javax.swing.JMenuItem erozja;
@@ -1549,6 +1598,7 @@ public class SelerShopView extends FrameView {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JPopupMenu.Separator jSeparator1;
@@ -1644,6 +1694,7 @@ public class SelerShopView extends FrameView {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mnozenie;
     private javax.swing.JMenuItem obliczHistogram;
+    private javax.swing.JMenuItem odejmijobraz;
     private javax.swing.JMenuItem otwarcie;
     private javax.swing.JMenuItem otworz;
     private javax.swing.JPanel panelMacierzy;

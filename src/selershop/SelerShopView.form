@@ -1367,6 +1367,32 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu5">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jMenu5.text"/>
+            <Property name="name" type="java.lang.String" value="jMenu5" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="dodajobraz">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="dodajobraz.text"/>
+                <Property name="name" type="java.lang.String" value="dodajobraz" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dodajobrazActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="odejmijobraz">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="odejmijobraz.text"/>
+                <Property name="name" type="java.lang.String" value="odejmijobraz" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="odejmijobrazActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="helpMenu">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="helpMenu.text"/>
