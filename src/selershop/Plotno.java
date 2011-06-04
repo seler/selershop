@@ -329,10 +329,6 @@ public class Plotno extends javax.swing.JPanel {
         repaint();
     }
     
-    public void OdejmijObrazy(){
-        
-    }
-    
     private int DodajKolory(int c1, int c2){
         int c3 = c1+c2;
         if(c3>255)c3=255;
@@ -340,7 +336,7 @@ public class Plotno extends javax.swing.JPanel {
     }
     private int OdejmijKolory(int c1, int c2){
         int c3 = c1-c2;
-        if(c3>255)c3=0;
+        if(c3<0)c3=0;
         return c3;
     }
     
